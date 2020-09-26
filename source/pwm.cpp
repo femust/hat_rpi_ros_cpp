@@ -35,7 +35,7 @@ PWM::PWM (int deviceAddress)
 {
     if (device.isValid())
     {
-        log::output ("Resetting PCA9685 mode 1 (without sleep) and mode 2");
+        log2::output ("Resetting PCA9685 mode 1 (without sleep) and mode 2");
 
         setAll (0, 0);
         device.write8 (Registers::kMode2, Bits::kOutDrive);
@@ -65,12 +65,12 @@ void PWM::setFrequency (double frequency)
         preScaleValue /= frequency;
         preScaleValue -= 1.0;
 
-        log::output ("Setting PWM frequency to " + std::to_string (frequency) + "Hz");
-        log::output ("Estimated pre-scale: " + std::to_string (preScaleValue));
+        log2::output ("Setting PWM frequency to " + std::to_string (frequency) + "Hz");
+        log2::output ("Estimated pre-scale: " + std::to_string (preScaleValue));
 
         const int finalPreScale = static_cast<int> (preScaleValue + 0.5);
 
-        log::output ("Final pre-scale: " + std::to_string (finalPreScale));
+        log2::output ("Final pre-scale: " + std::to_string (finalPreScale));
 
         const int oldMode = device.read8 (Registers::kMode1);
         const int newMode = (oldMode & 0x7F) | Bits::kSleep;

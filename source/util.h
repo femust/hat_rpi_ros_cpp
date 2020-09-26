@@ -34,7 +34,7 @@
 #include <sstream>
 #include <regex>
 
-namespace log
+namespace log2
 {
     /**
         Writes a message to stdout.
@@ -84,7 +84,7 @@ namespace util
             }
             return false;
         }
-        log::error ("Failed to open " + filename);
+        log2::error ("Failed to open " + filename);
         return false;
     }
 
@@ -115,7 +115,7 @@ namespace util
             }
         }
 
-        log::error ("Couldn\'t find Raspberry Pi revision number.");
+        log2::error ("Couldn\'t find Raspberry Pi revision number.");
         return -1;
     }
 
@@ -151,7 +151,7 @@ namespace util
             }
         }
 
-        log::error ("Unrecognised Raspberry Pi device.");
+        log2::error ("Unrecognised Raspberry Pi device.");
         return -1;
     }
 }
